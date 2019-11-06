@@ -7,10 +7,16 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
+<head>
+  <meta charset="utf-8">
+  <title>数据发送测试</title>
+</head>
+<body>
+<form action="MyServlet" method="GET">
+  姓名：<input type="text" name="name"><br>
+  <input type="submit" value="提交" />
+</form>
+<a href="HelloServlet">hello</a>
+<a href="MyServlet">my</a>
+</body>
 </html>

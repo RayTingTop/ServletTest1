@@ -24,11 +24,13 @@ public class MyServlet extends HttpServlet {
     }
 
     @Override
-    public void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("servlet——doGet！");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter writer = response.getWriter();
         writer.write("<h1>" + message + new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()) + "</h1>");
+        writer.write("<h1>" + new String(request.getParameter("name").getBytes("ISO-8859-1"),"UTF-8") + "</h1>");
+
         destroy();
     }
 
