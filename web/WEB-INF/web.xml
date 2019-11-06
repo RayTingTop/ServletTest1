@@ -12,4 +12,14 @@
             <servlet-name>HelloServlet</servlet-name>
             <url-pattern>/HelloServlet</url-pattern>
         </servlet-mapping>
+
+        <servlet>
+            <servlet-name>MyServlet</servlet-name>
+            <servlet-class>MyServlet</servlet-class>
+        </servlet>
+
+        <servlet-mapping>
+            <servlet-name>MyServlet</servlet-name>
+            <url-pattern>/MyServlet</url-pattern>
+        </servlet-mapping>
 </web-app>
