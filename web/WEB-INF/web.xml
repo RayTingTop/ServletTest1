@@ -3,6 +3,7 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+    <!--过滤器-->
     <filter>
         <filter-name>MyFilter</filter-name>
         <filter-class>filter.MyFilter</filter-class>
@@ -16,7 +17,7 @@
         <url-pattern>/MyServlet</url-pattern>
     </filter-mapping>
 
-
+    <!--基础测试-->
     <servlet>
         <servlet-name>HelloServlet</servlet-name>
         <servlet-class>servlet.HelloServlet</servlet-class>
@@ -26,6 +27,7 @@
         <url-pattern>/HelloServlet</url-pattern>
     </servlet-mapping>
 
+    <!--多种测试-->
     <servlet>
         <servlet-name>MyServlet</servlet-name>
         <servlet-class>servlet.MyServlet</servlet-class>
@@ -35,6 +37,7 @@
         <url-pattern>/MyServlet</url-pattern>
     </servlet-mapping>
 
+    <!--查看cookies-->
     <servlet>
         <servlet-name>ReadCookies</servlet-name>
         <servlet-class>servlet.ReadCookies</servlet-class>
@@ -44,6 +47,7 @@
         <url-pattern>/ReadCookies</url-pattern>
     </servlet-mapping>
 
+    <!--查看session-->
     <servlet>
         <servlet-name>SessionTest</servlet-name>
         <servlet-class>servlet.SessionTest</servlet-class>
@@ -53,6 +57,7 @@
         <url-pattern>/SessionTest</url-pattern>
     </servlet-mapping>
 
+    <!--访问数据库-->
     <servlet>
         <servlet-name>DataBaseTest</servlet-name>
         <servlet-class>servlet.DataBaseTest</servlet-class>
@@ -62,6 +67,7 @@
         <url-pattern>/DataBaseTest</url-pattern>
     </servlet-mapping>
 
+    <!--文件上传-->
     <servlet>
         <servlet-name>UploadServlet</servlet-name>
         <servlet-class>servlet.UploadServlet</servlet-class>
@@ -71,6 +77,15 @@
         <url-pattern>/UploadServlet</url-pattern>
     </servlet-mapping>
 
+    <!--文件下载-->
+    <servlet>
+        <servlet-name>DownloadServlet</servlet-name>
+        <servlet-class>servlet.DownloadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DownloadServlet</servlet-name>
+        <url-pattern>/DownloadServlet</url-pattern>
+    </servlet-mapping>
 
 
 

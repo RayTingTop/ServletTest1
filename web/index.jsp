@@ -42,6 +42,10 @@
   <br/>
   <h2>${message}</h2>
 </form>
+<br><hr>
+
+文件下载
+<a href="DownloadServlet?fileName=test.txt" rel="nofollow">下载文件 test.txt </a>
 
 </body>
 </html>
