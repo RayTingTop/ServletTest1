@@ -2,11 +2,13 @@ package servlet;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Enumeration;
@@ -14,7 +16,10 @@ import java.util.Enumeration;
 /**
  * @author RayTing
  * @date 2019-11-06 16:37
- * 接收表单信息，定时刷新时间，显示请求头
+ * 定时刷新时间
+ * 接收表单信息,判断是否抛出异常,保存表单信息到cookie
+ *
+ * 显示请求头
  */
 @WebServlet(name = "MyServlet")
 public class MyServlet extends HttpServlet {
@@ -36,30 +41,35 @@ public class MyServlet extends HttpServlet {
         PrintWriter writer = response.getWriter();
         writer.write("<h1>" + message + new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()) + "</h1>");
 
-        String name = new String(request.getParameter("name").getBytes("ISO-8859-1"),"UTF-8");
-        if (!name.equals("张三")){
+        String name = new String(request.getParameter("name").getBytes("ISO-8859-1"), "UTF-8");
+        if (!name.equals("张三")) {
             throw new ServletException(); //抛出异常
         }
 
-        writer.write("<h1>" + name + "</h1>");
+        // 为名字创建 Cookie, 有中文内容需要转码
+        Cookie nameCookie = new Cookie("name", URLEncoder.encode(request.getParameter("name"), "UTF-8"));
+        nameCookie.setMaxAge(60*60*24);//过期时间24小时
+        response.addCookie( nameCookie );
 
+
+        writer.write("接收到参数：<h1>" + name + "</h1>");
 
         String docType = "<!DOCTYPE html> ";
-        String title ="请求头信息";
+        String title = "请求头信息";
         writer.println(docType +
                 "<html>" +
-                "<head><meta charset='utf-8'><title>" + title + "</title></head>"+
+                "<head><meta charset='utf-8'><title>" + title + "</title></head>" +
                 "<body bgcolor='#f0f0f0'>" +
                 "<h1 align='center'>" + title + "</h1>" +
                 "<table width='100%' border='1' align='center'>" +
                 "<tr bgcolor='#949494'>" +
-                "<th>Header 名称</th><th>Header 值</th>"+
+                "<th>Header 名称</th><th>Header 值</th>" +
                 "</tr>");
 
         Enumeration headerNames = request.getHeaderNames(); //获取所有的头名
 
-        while(headerNames.hasMoreElements()) { //遍历请求头
-            String paramName = (String)headerNames.nextElement();
+        while (headerNames.hasMoreElements()) { //遍历请求头
+            String paramName = (String) headerNames.nextElement();
             writer.print("<tr><td>" + paramName + "</td>");
             String paramValue = request.getHeader(paramName);//获取请求头信息
             writer.println("<td> " + paramValue + "</td></tr>");

@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 /**
  * @author RayTing
  * @date 2019-11-07 11:44
+ * servlet异常处理
  */
 public class ErrorHandler extends HttpServlet {
     @Override

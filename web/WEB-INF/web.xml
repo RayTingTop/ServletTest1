@@ -35,6 +35,35 @@
         <url-pattern>/MyServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ReadCookies</servlet-name>
+        <servlet-class>servlet.ReadCookies</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReadCookies</servlet-name>
+        <url-pattern>/ReadCookies</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SessionTest</servlet-name>
+        <servlet-class>servlet.SessionTest</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SessionTest</servlet-name>
+        <url-pattern>/SessionTest</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DataBaseTest</servlet-name>
+        <servlet-class>servlet.DataBaseTest</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DataBaseTest</servlet-name>
+        <url-pattern>/DataBaseTest</url-pattern>
+    </servlet-mapping>
+
+
+
 
     <!-- error servlet 定义 -->
     <servlet>
@@ -50,7 +79,7 @@
     <!-- error-code 相关的错误页面 -->
     <error-page>
         <error-code>404</error-code>
-        <location>/403.html</location>
+        <location>/404.html</location>
     </error-page>
     <error-page>
         <error-code>403</error-code>
