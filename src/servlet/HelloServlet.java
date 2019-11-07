@@ -1,3 +1,5 @@
+package servlet;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,10 +18,14 @@ public class HelloServlet extends HttpServlet {
 
     // 执行必需的初始化
     public void init() throws ServletException {
+        System.out.println("HelloServlet->init()");
         message = "Hello World";
+        super.init();
     }
 
     public void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("HelloServlet->doGet()");
+
         // 设置响应内容类型
         response.setContentType("text/html");
     
@@ -28,8 +34,15 @@ public class HelloServlet extends HttpServlet {
         out.println("<h1>" + message + "</h1>");
     }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("--HelloServlet->doPost()");
+        this.doGet(req, resp);
+    }
+
     // 什么也不做
     public void destroy() {
-
+        System.out.println("HelloServlet->destroy()");
+        super.destroy();
     }
 }

@@ -9,14 +9,17 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>数据发送测试</title>
+  <title>数据发送测试-index.jsp</title>
 </head>
 <body>
 <form action="MyServlet" method="GET">
-  姓名：<input type="text" name="name"><br>
+  姓名：<input type="text" name="name" value="张三"><br>
   <input type="submit" value="提交" />
 </form>
-<a href="HelloServlet">hello</a>
-<a href="MyServlet">my</a>
+<a href="HelloServlet">HelloServlet</a>
+<a href="MyServlet">MyServlet</a>
+<a href="ErrorHandler">ErrorHandler</a>
+
+
 </body>
 </html>
