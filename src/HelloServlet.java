@@ -22,7 +22,7 @@ public class HelloServlet extends HttpServlet {
     public void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         // 设置响应内容类型
         response.setContentType("text/html");
-          //测试一下同步
+    
         // 实际的逻辑是在这里
         PrintWriter out = response.getWriter();
         out.println("<h1>" + message + "</h1>");
