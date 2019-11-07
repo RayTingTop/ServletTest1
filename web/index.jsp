@@ -1,11 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: eva4
-  Date: 2019/11/6
-  Time: 16:20
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
   <meta charset="utf-8">
@@ -27,9 +20,9 @@
   </style>
 </head>
 <body>
+提交到MyServlet，会保存name到cookie
 <form action="MyServlet" method="GET">
   姓名：<input type="text" name="name" value="张三"><input type="submit" value="提交" /><br>
-  提交到MyServlet，会保存name到cookie
 </form>
 <br><a href="HelloServlet">HelloServlet</a>：基础测试
 <br><a href="MyServlet" >MyServlet</a>：定时刷新时间，接收表单信息,判断是否抛出异常,保存表单信息到cookie，显示请求头
@@ -37,6 +30,18 @@
 <br><a href="ReadCookies" >ReadCookies</a>：查看cookies，会删掉cookies里的name
 <br><a href="SessionTest" >SessionTest</a>：session信息
 <br><a href="DataBaseTest" >DataBaseTest</a>：数据库查询
+
+<br><hr>
+文件上传
+<form method="post" action="UploadServlet" enctype="multipart/form-data">
+  选择一个文件:<br/>
+  <input type="file" name="uploadFile" />
+  <br/>
+  <br/>
+  <input type="submit" value="上传" />
+  <br/>
+  <h2>${message}</h2>
+</form>
 
 </body>
 </html>
