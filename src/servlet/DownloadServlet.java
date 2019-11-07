@@ -25,28 +25,26 @@ public class DownloadServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("DownloadServlet->doGet()");
         //获取文件名
-        String filename=new String(request.getParameter("fileName").getBytes("iso8859-1"),"utf-8");
+        String fileName=new String(request.getParameter("fileName").getBytes("iso8859-1"),"utf-8");
 
         //在控制台打印文件名
-        System.out.println("文件名："+filename);
+        System.out.println("文件名："+fileName);
 
         //设置文件MIME类型
-        response.setContentType(getServletContext().getMimeType(filename));
+        response.setContentType(getServletContext().getMimeType(fileName));
         //设置Content-Disposition
-        response.setHeader("Content-Disposition", "attachment;filename="+filename);
+        response.setHeader("Content-Disposition", "attachment;filename="+fileName);
 
         //获取要下载的文件绝对路径，我的文件都放到WebRoot/download目录下
         ServletContext context=this.getServletContext();
-        String fullFileName=context.getRealPath("/file/"+filename);
+        String filePath=context.getRealPath("/file/"+fileName);
 
         //输入流为项目文件，输出流指向浏览器
-        InputStream is=new FileInputStream(fullFileName);
+        InputStream is=new FileInputStream(filePath);
         ServletOutputStream os =response.getOutputStream();
 
-        /*
-         * 设置缓冲区
-         * is.read(b)当文件读完时返回-1
-         */
+
+        //设置缓冲区,is.read(b)当文件读完时返回-1
         int len=-1;
         byte[] b=new byte[1024];
         while((len=is.read(b))!=-1){
@@ -55,7 +53,6 @@ public class DownloadServlet extends HttpServlet {
         //关闭流
         is.close();
         os.close();
-
     }
 
     @Override
