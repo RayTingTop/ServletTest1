@@ -6,6 +6,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -72,6 +73,8 @@ public class SendMailServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
+        //ServletContext 把它的消息记录到 Servlet 容器的日志文件中。Tomcat在 <Tomcat-installation-directory>/logs 中
+        ServletContext context = getServletContext();
         try{
 
             MimeMessage message = new MimeMessage(session); // 创建一个默认的 MimeMessage 对象
@@ -100,6 +103,7 @@ public class SendMailServlet extends HttpServlet {
                     "<p align='center'>" + res + "</p>" +
                     "</body></html>");
         }catch (MessagingException mex) {
+            context.log("邮件发送异常");//使出日志
             mex.printStackTrace();
         }
     }
