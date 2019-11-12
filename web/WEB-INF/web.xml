@@ -87,6 +87,16 @@
         <url-pattern>/DownloadServlet</url-pattern>
     </servlet-mapping>
 
+    <!--发送邮件-->
+    <servlet>
+        <servlet-name>SendMailServlet</servlet-name>
+        <servlet-class>servlet.SendMailServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SendMailServlet</servlet-name>
+        <url-pattern>/SendMailServlet</url-pattern>
+    </servlet-mapping>
+
 
 
     <!-- error servlet 定义 -->
